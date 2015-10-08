@@ -1,1 +1,1 @@
-# Skeleton project for Swagger
+Mobile Api Project for Homie
