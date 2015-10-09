@@ -65,7 +65,25 @@ paths:
         "401":
           description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"            
+            $ref: "#/definitions/ErrorResponse"      
+  /v1/login:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: authentication
+    get:
+      description: Authenticate User
+      # used as the method name of the controller
+      operationId: authenticate
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/CommunityScreenResponse"
+        # responses may fall through to errors
+        "401":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"         
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -83,6 +101,12 @@ definitions:
       message:
         type: string
   CommunityScreenResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  AuthenticationResponse:
     required:
       - message
     properties:
