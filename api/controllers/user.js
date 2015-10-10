@@ -35,22 +35,18 @@ module.exports = {
   Param 2: a handle to the response object
  */
 
-function communityScreen(req, res) {
+function getUser(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
+
   var name = req.swagger.params.name.value || 'stranger';
   var hello = util.format('Hello, BOB!');
-  //Returns a Home Screen Object
 
   //**High Level**
-  //The root of the Json will specify what type of screens it is
-  //Thus the app will know how to parse the screen
-  //The Screen Object will contain a user model
+  //Get the user object
   
   //**Low Level**
-  //1)Recieve the user model controller by passing in the userID
-  //2)Add the user model to the community screen JSON object
-  //3)Add the Json object to the response
+  //1)Call the Orm layer to get the User Object from the datasource
 
-  //this sends back a JSON response which is a single string
+  //this sends back the Json to caller
   res.json(hello);
 }
